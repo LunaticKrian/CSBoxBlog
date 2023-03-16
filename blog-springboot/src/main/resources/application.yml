@@ -1,0 +1,129 @@
+# 配置端口
+server:
+  port: 8090
+  servlet:
+    session:
+      timeout: 21600
+
+# 配置mysql数据库
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://82.157.192.119:3306/krianblog?serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: Krian18723220402
+    hikari:
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 连接池名称
+      pool-name: MyHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  # redis配置
+  redis:
+    host: 82.157.192.119
+    port: 6379
+    password: Krian18723220402
+  # mq配置
+  rabbitmq:
+    host: 82.157.192.119
+    # 5672 注册端，15672是网页端
+    port: 5672
+    # sudo docker pull rabbitmq:management 使用 docker 拉取 rabbitmq 镜像
+    # sudo docker run --name rabbit --restart=always -p 15672:15672 -p 5672:5672 -d rabbitmq:management
+    # 安装成功后它的默认用户名和密码是 guest
+    username: ems
+    password: 123
+    virtual-host: /ems
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3 #最大重试次数
+          initial-interval: 3000 #重试间隔时间（单位毫秒）
+  # es配置 若搜索模式为mysql可删除
+  #  elasticsearch:
+  #    rest:
+  #      uris: 你的IP:9200
+  # 邮箱配置,QQ邮箱的设置需要开启 IMAP/SMTP服务
+  mail:
+    host: smtp.qq.com
+    #    host: smtp.163.com
+    username: 2793260947@qq.com
+    # 这里是授权码
+    password: aybbhxzffggkddhc
+    default-encoding: UTF-8
+    port: 587
+    properties:
+      mail:
+      smtp:
+      auth: true
+      socketFactory:
+      class: javax.net.ssl.SSLSocketFactory
+  # 上传图片大小限制
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size:  100MB
+
+# 配置MybatisPlus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # 下面这个我注释掉，不需要日志
+    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+# 搜索模式 可选 elasticsearch或mysql
+search:
+  mode: mysql
+
+
+# 上传模式 可选 oss或local  （http://和最后的/一定不能去！！！）
+upload:
+  mode: local
+  local:
+    # nginx映射本地文件路径，无域名则为 ip:83
+    url: http://82.157.192.119:83/
+    # 本地文件存储路径
+    path: /root/project/blog/upload/
+    # oss 是阿里云，这里我把它注释掉，我们使用腾讯云-cos
+  #  oss:
+  #    url: http://Bucket域名/
+  #    endpoint: OSS配置endpoint
+  #    accessKeyId: OSS配置accessKeyId
+  #    accessKeySecret: OSS配置accessKeySecret
+  #    bucketName: OSS配置bucketName
+  cos:
+    url: http://cos.ytongsai.cn/
+    secretId: AKIDXruLVNySheKjriIiaEdlcCUVFjzyj1y7
+    secretKey: 1tYzC9pJabDYdRzGJ8h6HCtNbdPyINDn
+    region: ap-chongqing
+    bucketName: test-1316318894
+
+# 网站前台域名（邮件通知用）
+website:
+  url: http://82.157.192.119
+
+#第三方配置信息
+qq:
+  app-id: QQ APPID
+  check-token-url: https://graph.qq.com/oauth2.0/me?access_token={access_token}
+  user-info-url: https://graph.qq.com/user/get_user_info?openid={openid}&access_token={access_token}&oauth_consumer_key={oauth_consumer_key}
+
+#weibo:
+#  app-id: 微博APPID
+#  app-secret: 微博APPSECRET
+#  grant-type: authorization_code
+#  redirect-url: 微博回调地址
+#  access-token-url: https://api.weibo.com/oauth2/access_token
+#  user-info-url: https://api.weibo.com/2/users/show.json?uid={uid}&access_token={access_token}
