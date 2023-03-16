@@ -105,10 +105,10 @@ upload:
   #    bucketName: OSS配置bucketName
   cos:
     url: http://cos.ytongsai.cn/
-    secretId: AKIDXruLVNySheKjriIiaEdlcCUVFjzyj1y7
-    secretKey: 1tYzC9pJabDYdRzGJ8h6HCtNbdPyINDn
-    region: ap-chongqing
-    bucketName: test-1316318894
+    secretId: AKIDXruLV
+    secretKey: 1tYzC9pJ
+    region: ap-c
+    bucketName: test-13
 
 # 网站前台域名（邮件通知用）
 website:
