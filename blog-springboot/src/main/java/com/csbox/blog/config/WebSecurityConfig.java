@@ -77,7 +77,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 配置登录注销路径
         http.formLogin()
                 .loginProcessingUrl("/login")
+                // 登录成功处理器：
                 .successHandler(authenticationSuccessHandler)
+                // 登录失败处理器：
                 .failureHandler(authenticationFailHandler)
                 .and()
                 .logout()

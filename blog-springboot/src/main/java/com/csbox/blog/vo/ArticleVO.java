@@ -10,10 +10,7 @@ import java.util.List;
 
 
 /**
- * 文章
- *
- * @author yezhiqiu
- * @date 2021/08/03
+ * 文章 VO
  */
 @Data
 @Builder

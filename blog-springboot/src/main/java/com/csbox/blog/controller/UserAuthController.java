@@ -19,15 +19,18 @@ import java.util.List;
 
 /**
  * 用户账号控制器
- *
- * @author yezhiqiu
- * @date 2021/07/28
  */
 @Api(tags = "用户账号模块")
 @RestController
 public class UserAuthController {
+
+    // 使用基于构造方法注入：
+    private final UserAuthService userAuthService;
+
     @Autowired
-    private UserAuthService userAuthService;
+    public UserAuthController(UserAuthService userAuthService) {
+        this.userAuthService = userAuthService;
+    }
 
     /**
      * 发送邮箱验证码

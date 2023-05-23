@@ -3,8 +3,6 @@ package com.csbox.blog.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author hnz
- * @date 2022/3/23 11:16
  * @description redis接口限流
  */
 @Target(ElementType.METHOD)

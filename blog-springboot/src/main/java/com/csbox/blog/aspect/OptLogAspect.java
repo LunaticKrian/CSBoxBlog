@@ -24,9 +24,6 @@ import java.util.Objects;
 
 /**
  * 操作日志切面处理
- *
- * @author yezhiqiu
- * @date 2021/07/27
  */
 @Aspect
 @Component
@@ -39,7 +36,8 @@ public class OptLogAspect {
      * 设置操作日志切入点 记录操作日志 在注解的位置切入代码
      */
     @Pointcut("@annotation(com.csbox.blog.annotation.OptLog)")
-    public void optLogPointCut() {}
+    public void optLogPointCut() {
+    }
 
 
     /**

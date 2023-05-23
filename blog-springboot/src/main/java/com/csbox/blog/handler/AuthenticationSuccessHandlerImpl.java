@@ -21,16 +21,26 @@ import static com.csbox.blog.constant.CommonConst.APPLICATION_JSON;
 
 
 /**
- * 登录成功处理
- *
- * @author yezhiqiu
- * @date 2021/07/28
+ * Spring Security 登录成功处理器
  */
 @Component
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
-    @Autowired
-    private UserAuthDao userAuthDao;
 
+    private final UserAuthDao userAuthDao;
+
+    @Autowired
+    public AuthenticationSuccessHandlerImpl(UserAuthDao userAuthDao) {
+        this.userAuthDao = userAuthDao;
+    }
+
+    /**
+     * 返回登录授权成功信息
+     *
+     * @param httpServletRequest http请求
+     * @param httpServletResponse http响应
+     * @param authentication 权限信息
+     * @throws IOException IO异常
+     */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException {
         // 返回登录信息

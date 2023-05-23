@@ -22,9 +22,6 @@ import static com.csbox.blog.constant.OptTypeConst.*;
 
 /**
  * 文章控制器
- *
- * @author yezhiqiu
- * @date 2021/07/28
  */
 @Api(tags = "文章模块")
 @RestController

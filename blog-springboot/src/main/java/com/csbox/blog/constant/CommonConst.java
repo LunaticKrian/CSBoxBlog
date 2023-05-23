@@ -3,9 +3,6 @@ package com.csbox.blog.constant;
 
 /**
  * 公共常量
- *
- * @author yezhiqiu
- * @date 2021/07/27
  */
 public class CommonConst {
 

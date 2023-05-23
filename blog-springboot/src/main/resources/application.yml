@@ -28,11 +28,13 @@ spring:
       # 数据库连接超时时间,默认30秒，即30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+
   # redis配置
   redis:
     host: 82.157.192.119
     port: 6379
     password: Krian18723220402
+
   # mq配置
   rabbitmq:
     host: 82.157.192.119
@@ -50,14 +52,15 @@ spring:
           enabled: true
           max-attempts: 3 #最大重试次数
           initial-interval: 3000 #重试间隔时间（单位毫秒）
-  # es配置 若搜索模式为mysql可删除
-  #  elasticsearch:
-  #    rest:
-  #      uris: 你的IP:9200
+    # es配置 若搜索模式为mysql可删除
+  #    elasticsearch:
+  #      rest:
+  #        uris: 你的IP:9200
+
   # 邮箱配置,QQ邮箱的设置需要开启 IMAP/SMTP服务
   mail:
     host: smtp.qq.com
-    #    host: smtp.163.com
+    # host: smtp.163.com
     username: 2793260947@qq.com
     # 这里是授权码
     password: aybbhxzffggkddhc
@@ -73,14 +76,14 @@ spring:
   servlet:
     multipart:
       max-file-size: 100MB
-      max-request-size:  100MB
+      max-request-size: 100MB
 
 # 配置MybatisPlus
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     # 下面这个我注释掉，不需要日志
-    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
 # 搜索模式 可选 elasticsearch或mysql
@@ -97,12 +100,12 @@ upload:
     # 本地文件存储路径
     path: /root/project/blog/upload/
     # oss 是阿里云，这里我把它注释掉，我们使用腾讯云-cos
-  #  oss:
-  #    url: http://Bucket域名/
-  #    endpoint: OSS配置endpoint
-  #    accessKeyId: OSS配置accessKeyId
-  #    accessKeySecret: OSS配置accessKeySecret
-  #    bucketName: OSS配置bucketName
+  #      oss:
+  #        url: http://Bucket域名/
+  #        endpoint: OSS配置endpoint
+  #        accessKeyId: OSS配置accessKeyId
+  #        accessKeySecret: OSS配置accessKeySecret
+  #        bucketName: OSS配置bucketName
   cos:
     url: http://cos.ytongsai.cn/
     secretId: AKIDXruLV
@@ -114,16 +117,16 @@ upload:
 website:
   url: http://82.157.192.119
 
-#第三方配置信息
+# OAuth2 第三方配置信息
 qq:
   app-id: QQ APPID
   check-token-url: https://graph.qq.com/oauth2.0/me?access_token={access_token}
   user-info-url: https://graph.qq.com/user/get_user_info?openid={openid}&access_token={access_token}&oauth_consumer_key={oauth_consumer_key}
 
-#weibo:
-#  app-id: 微博APPID
-#  app-secret: 微博APPSECRET
-#  grant-type: authorization_code
-#  redirect-url: 微博回调地址
-#  access-token-url: https://api.weibo.com/oauth2/access_token
-#  user-info-url: https://api.weibo.com/2/users/show.json?uid={uid}&access_token={access_token}
+weibo:
+  app-id: 微博APPID
+  app-secret: 微博APPSECRET
+  grant-type: authorization_code
+  redirect-url: 微博回调地址
+  access-token-url: https://api.weibo.com/oauth2/access_token
+  user-info-url: https://api.weibo.com/2/users/show.json?uid={uid}&access_token={access_token}

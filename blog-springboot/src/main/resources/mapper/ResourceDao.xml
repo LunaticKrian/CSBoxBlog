@@ -3,6 +3,4 @@
 <mapper namespace="com.csbox.blog.dao.ResourceDao">
 
 
-
-
 </mapper>

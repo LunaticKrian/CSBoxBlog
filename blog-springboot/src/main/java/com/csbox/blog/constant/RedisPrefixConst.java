@@ -2,9 +2,6 @@ package com.csbox.blog.constant;
 
 /**
  * redis常量
- *
- * @author yezhiqiu
- * @date 2021/07/27
  */
 public class RedisPrefixConst {
 
